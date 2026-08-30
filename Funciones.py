@@ -48,29 +48,29 @@ def validar_fecha(F):
                     else:
                             return False
             else:
-                  return "Error: Verifique que la fecha sea válida"
+                  return "Error: Verifique que la fecha sea valida"
         else:
-              return "Error: sin dato de fecha"
+              return "Error: Sin dato de fecha"
     else:
-        return "Error: Formato Inválido"
+        return "Error: Formato inválido"
 
 def validar_hora(H):
      try:
         hora = int(H)
         if  hora < 0 or hora > 23:
-                return "fuera de rango"
+                return "Error: Hora fuera de rango"
         else:
              return True
                 
-     except:
-          return"Formato Inválido"
+     except ValueError:
+          return "Error: Formato inválido"
         
 def validar_temperatura(T):
        try:
          temp=float(T)
          return True
-       except:
-         return "Formato invalido"
+       except ValueError:
+         return "Error: Formato inválido"
 
 def validar_humedad(HUM):
        try:
@@ -78,9 +78,9 @@ def validar_humedad(HUM):
             if  0 <= H and H <= 100:
                 return True
             else:
-                 return "Humedad invalida"
-       except:
-             return "Formato invalido"
+                 return "Error: Humedad invalida"
+       except ValueError:
+             return "Error: Formato inválido"
 
 def validar_presion_viento(P):
       
@@ -91,9 +91,9 @@ def validar_presion_viento(P):
           if 0 <= hpa:
               return True
           else:
-             return "Numero no valido"   
-      except:
-           return "Formato invalido"
+             return "Error: Numero no valido"   
+      except ValueError:
+           return "Error: Formato inválido"
       
 def validar_direccion(d):
     try:
@@ -101,9 +101,9 @@ def validar_direccion(d):
         if 0 <= num <= 360:
              return True
         else:
-             return "Fuera de Rango"
-    except:
-        return "Formato inválido"
+             return "Error: Dirección fuera de rango"
+    except ValueError:
+        return "Error: Formato inválido"
 
 def reconstruir_registro(AR):
     registros = []
@@ -125,7 +125,7 @@ def reconstruir_registro(AR):
             registros.append(registro_actual)
     return registros
 
-def transformar_registros(registro):
+def parsear_registros(registro):
     fecha=registro[0:8].strip()
     hora = registro[9:15].strip()
     temperatura = registro[16:21].strip()
@@ -139,21 +139,33 @@ def transformar_registros(registro):
 def validar_registro(datos):
     errores = []
     fecha, hora, temperatura, humedad, presion, direccion, velocidad, nombre = datos
+    resultado = validar_fecha(fecha)
+    if resultado != True:
+        errores.append(resultado)
 
-    if validar_fecha(fecha) != True:
-        errores.append("Fecha inválida")
-    if validar_hora(hora) != True:
-        errores.append("Hora inválida")
-    if validar_temperatura(temperatura) != True:
-        errores.append("Temperatura inválida")
-    if validar_humedad(humedad) != True:
-        errores.append("Humedad inválida")
-    if validar_presion_viento(presion) != True:
-        errores.append("Presión inválida")
-    if validar_direccion(direccion) != True:
-        errores.append("Dirección inválida")
-    if validar_presion_viento(velocidad) != True:
-        errores.append("Velocidad inválida")
+    resultado = validar_hora(hora)
+    if resultado != True:
+        errores.append(resultado)
+
+    resultado =validar_temperatura(temperatura) 
+    if resultado != True:
+        errores.append(resultado)
+
+    resultado = validar_humedad(humedad)   
+    if resultado != True:
+        errores.append(resultado)
+
+    resultado = validar_presion_viento(presion)
+    if resultado != True:
+        errores.append(resultado)
+
+    resultado = validar_direccion(direccion)
+    if resultado != True:
+        errores.append(resultado)
+
+    resultado = validar_presion_viento(velocidad)  
+    if resultado != True:
+        errores.append(resultado)
     if nombre == "":
         errores.append("Nombre de estación vacío")
 
