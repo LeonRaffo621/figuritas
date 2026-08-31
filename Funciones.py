@@ -1,3 +1,4 @@
+import sys
 def def_n(n):
     if str(n).isnumeric():
         numero = int(n)
@@ -172,3 +173,11 @@ def validar_registro(datos):
 
     return errores
 
+def ruta_consola():
+    if len(sys.argv)!=3:
+        print("ERROR: Argumanetos incorrectos")
+        print("Uso esperado: Main.py <lectura.txt> <archivo_salida.json>")
+        sys.exit(1)
+    archivo_txt=sys.argv[1]
+    archivo_json=sys.argv[2]
+    return archivo_txt, archivo_json

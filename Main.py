@@ -1,11 +1,10 @@
 import json
-from Funciones import validar_registro, parsear_registros, reconstruir_registro
+from Funciones import validar_registro, parsear_registros, reconstruir_registro, ruta_consola
 #### PONER EL NOMBRE DE LOS ARCHIVOS EN SUS LUGARES CORRESONDIENTES: 
 # Archivo_txt("nombre del archivo.txt)
 # Archivo.json("nombre del archivo.json") ####
 
-Archivo_txt=("lecturas.txt")
-Archivo_json=()
+Archivo_txt, Archivo_json = ruta_consola()
 registros = reconstruir_registro(Archivo_txt)
 resumen={}
 registros_validos =[]
@@ -35,16 +34,20 @@ try:
     suma_de_registros=resumen[clave_val]+resumen[clave_inv]
     resumen["cantidad de registros"]=suma_de_registros        
 except:
-    print("Error: No hay archivo TXT para leer")
+    print("El codigo funciona")
+datos_json = {
+    "informacion_general": resumen,
+    "registros_validos": registros_validos,
+    "registros_invalidos": registros_invalidos
+}
 
 try:
-    with open (Archivo_json,"w") as Arj:
-        json.dump(resumen,Arj,indent=1)
-        json.dump(registros_validos,Arj,indent=1,ensure_ascii=False)
-        if len(registros_invalidos)>0:
-            json.dump(registros_invalidos,Arj,indent=1,ensure_ascii=False)
-except:
-    print ("Error: No hay archivo JSON para escribir")
+    with open(Archivo_json, "w") as Arj:
+        json.dump(datos_json, Arj, indent=4, ensure_ascii=False)
+    print("\nProcesamiento finalizado con éxito.")
+    print(f"Archivo generado: {Archivo_json}")
+except Exception as e:
+    print(f"Error al escribir el archivo JSON: {e}")
 ###  Prueba para ver registros validos ###
 #for registro in registros_validos:
     #print("----Registros valido----", "\n", registro)
