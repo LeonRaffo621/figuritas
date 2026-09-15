@@ -1,8 +1,5 @@
 import json
 from Funciones import validar_registro, parsear_registros, reconstruir_registro, ruta_consola
-#### PONER EL NOMBRE DE LOS ARCHIVOS EN SUS LUGARES CORRESONDIENTES: 
-# Archivo_txt("nombre del archivo.txt)
-# Archivo.json("nombre del archivo.json") ####
 
 Archivo_txt, Archivo_json = ruta_consola()
 registros = reconstruir_registro(Archivo_txt)
