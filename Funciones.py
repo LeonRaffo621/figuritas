@@ -175,7 +175,7 @@ def validar_registro(datos):
 
 def ruta_consola():
     if len(sys.argv)!=3:
-        print("ERROR: Argumanetos incorrectos")
+        print("ERROR: Argumentos incorrectos")
         print("Uso esperado: Main.py <lectura.txt> <archivo_salida.json>")
         sys.exit(1)
     archivo_txt=sys.argv[1]
