@@ -48,11 +48,5 @@ try:
     print(f"Archivo generado: {Archivo_json}")
 except Exception as e:
     print(f"Error al escribir el archivo JSON: {e}")
-###  Prueba para ver registros validos ###
-#for registro in registros_validos:
-    #print("----Registros valido----", "\n", registro)
 
-
-###  Prueba para ver registros invalidos ###
-#for registro in registros_invalidos:
-    #print("----Registros invalido----", "\n", registro) #Prueba para ver registros invalidos
+print (resumen)
