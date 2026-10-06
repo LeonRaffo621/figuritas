@@ -180,4 +180,8 @@ def ruta_consola():
         sys.exit(1)
     archivo_txt=sys.argv[1]
     archivo_json=sys.argv[2]
+<<<<<<< HEAD
     return archivo_txt, archivo_json
+=======
+    return archivo_txt, archivo_json
+>>>>>>> 014a0ebe60745ce12737c0fbbf01005890e70634
