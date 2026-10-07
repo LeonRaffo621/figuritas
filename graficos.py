@@ -12,15 +12,19 @@ def exportar_csv(registros_filtrados, ruta_salida):
             writre.writerow([reg["fecha"],reg["hora"],reg["valor"]])
 
 def generar_grafica(registros_filtrados, estacion, medicion, ruta_salida):
-    if not registros_filtrados:
+    if len(registros_filtrados) ==0:
         return None
     path_salida=Path(ruta_salida)
     path_salida.parent.mkdir(parents=True,exist_ok=True)
-    eje_x=[f"{r['fecha']}{r['hora']}h" for r in registros_filtrados]
-    eje_y=[r["valor"] for r in registros_filtrados]
+    eje_x=[]
+    eje_y=[]
+    for i in registros_filtrados:
+        etiquete_del_tiempo=f"{i['fecha']} {i['hora']}"
+        eje_x.append(etiquete_del_tiempo)
+        eje_y.append(r["valor"])
 
     plt.figure(figsize=(10,5))
-    plt.plot(eje_x,eje_y, marcador="o", estilio_de_linea="-", color="b", eti=medicion.capitalize())
+    plt.plot(eje_x,eje_y, marcador="o", estilio_de_linea="-", color="r", eti=medicion.capitalize())
     plt.title(f"{medicion.capitalize()} en {estacion}")
     plt.xlabel("Fecha y hora")
     plt.ylabel(medicion.capitalize())
