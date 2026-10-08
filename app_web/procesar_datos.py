@@ -36,4 +36,4 @@ def main():
     except Exception as error:
         print(f"se produgo un error en {error}")
 main()
-###Thiago si lees esto mandale saludos a Sol###
+
