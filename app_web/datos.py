@@ -1,5 +1,5 @@
 import json
-from Funciones import parsear_registros
+from conversor.Funciones import parsear_registros
 
 def cargar_json(r_json):
     try:

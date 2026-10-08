@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from Funciones import validar_registro, parsear_registros, reconstruir_registro, ruta_consola
+from conversor.Funciones import validar_registro, parsear_registros, reconstruir_registro, ruta_consola
 
 Archivo_txt, Archivo_json = ruta_consola()
 Archivo_txt = Path(Archivo_txt)
