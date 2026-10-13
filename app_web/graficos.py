@@ -21,7 +21,7 @@ def generar_grafica(registros_filtrados, estacion, medicion, ruta_salida):
     for i in registros_filtrados:
         etiquete_del_tiempo=f"{i['fecha']} {i['hora']}"
         eje_x.append(etiquete_del_tiempo)
-        eje_y.append(r["valor"])
+        eje_y.append(i["valor"])
 
     plt.figure(figsize=(10,5))
     plt.plot(eje_x,eje_y, marcador="o", estilio_de_linea="-", color="r", eti=medicion.capitalize())

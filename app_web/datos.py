@@ -7,7 +7,7 @@ def cargar_json(r_json):
             datos=json.load(f)
         return datos.get("registros validos", [])
     except FileNotFoundError:
-        raise FileNotFoundError(f"El archivo '{r_json}' no exixte")
+        raise FileNotFoundError(f"El archivo '{r_json}' no existe")
 
 def filtrar_datoss(registros_raw, estacion_buscada, medicion_buscada):
     tipos_de_mediciones={
