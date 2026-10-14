@@ -16,16 +16,18 @@ def main():
         registros_raw=cargar_json(ruta_json)
         filtrados=filtrar_datoss(registros_raw, estacion, medicion)
         if len(filtrados) ==0:
-            print("no se encuentran los datos para la '{estacion}' y medicion '{medicion}'. ")
+            print(f"no se encuentran los datos para la '{estacion}' y medicion '{medicion}'. ")
             return
         estadisticas=calcular_estadisticas(filtrados)
         print("estadisticas")
-        for i ,o in estadisticas.keys():
+        for i ,o in estadisticas.items():
             print(f"{i}: {o}")
         print("primeras 5")
-        for i in estadisticas[5]:
+        for i in filtrados[:5]:
             print(f"fecha: {i['fecha']}, hora: {i['hora']}, valor: {i['valor']}")
         fecha_de_hoy=datetime.now().strftime("%Y---%m---%d")
+        estacion_limpia = estacion.replace(" ", "_")
+        medicion_limpia = medicion.replace(" ", "_")
         ruta_csv= f"salidas/{fecha_de_hoy}_{estacion}_{medicion}.csv"
         ruta_png= f"salidas/{fecha_de_hoy}_{estacion}-{medicion}.png"
 
