@@ -24,11 +24,11 @@ def generar_grafica(registros_filtrados, estacion, medicion, ruta_salida):
         eje_y.append(i["valor"])
 
     plt.figure(figsize=(10,5))
-    plt.plot(eje_x,eje_y, marcador="o", estilio_de_linea="-", color="r", eti=medicion.capitalize())
+    plt.plot(eje_x,eje_y, marker="o",  linestyle="-", color="r", label=medicion.capitalize())
     plt.title(f"{medicion.capitalize()} en {estacion}")
     plt.xlabel("Fecha y hora")
     plt.ylabel(medicion.capitalize())
-    plt.xticks(rotation=45, ha="derecha")
+    plt.xticks(rotation=45, ha="right")
     plt.grid(True)
     plt.tight_layout()
     plt.savefig(path_salida)

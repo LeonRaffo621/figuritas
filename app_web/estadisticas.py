@@ -7,8 +7,8 @@ def calcular_estadisticas(registros_filtrados):
             "Promedio": None
         }
     lista_valores=[]
-    for i in registros_filtrados():
-        lista_valores.append(registros_filtrados)
+    for i in registros_filtrados:
+        lista_valores.append(i["valor"])
     cantidad=len(lista_valores)
     minimo=min(lista_valores)
     maximo=max(lista_valores)
